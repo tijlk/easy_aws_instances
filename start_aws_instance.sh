@@ -2,9 +2,9 @@
 export AWS_SECURITY_GROUP_NAME=MySecurityGroup
 export INSTANCE_SCRIPT=configure_aws_instance.sh
 export NOTEBOOK=test_aws_instance.ipynb
-export MY_KEY_NAME=CSE89
+export MY_KEY_NAME=MyKey
 export IMAGE_ID=ami-06ae1bbcb7042c6c6
-export INSTANCE_TYPE=p3.8xlarge
+export INSTANCE_TYPE=t2.micro
 export REGION=eu-central-1
 export INSTANCE_USER_NAME=ec2-user
 export PATH_TO_KEY=
