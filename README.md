@@ -1,4 +1,4 @@
-# Save $$$ on AWS by streamlining the instance creation process
+# Save $$$ on AWS by streamlining instance creation
 
 So you heard about these super duper AWS instances with multiple Tesla GPU's, s**tloads of RAM and more CPU cores than Donald Trump has towers, and you're dying to work on that, but you're short of $$$?
 
@@ -65,18 +65,18 @@ Let's run the script!
 
 <img src="run_the_script.png" alt="" style="width: 600px;"/>
 
-So the script created a Security Group opening ports 22 (so I can SSH into the instance) and port 8888, so I can work with the Jupyter notebook server on the instance from my local machine. It then started a new EC2 instance of the requested type, and copied my notebook and a configuration script to the instance. Finally it SSH'd into the instance forwarding port 8888 of the notebook server to port 8899 on my local machine.
+So the script created a Security Group opening ports 22 (so I can SSH into the instance) and port 8888 (so I can work with the Jupyter notebook server on the instance from my local machine). It then started a new EC2 instance of the requested type, and copied my notebook and a configuration script to the instance. Finally it SSH'd into the instance forwarding port 8888 of the notebook server to port 8899 on my local machine.
 
 I can then run the configuration script `configure_aws_instance.sh` to update some Python packages, maybe download some data and start the notebook server.
 
-<img src="configure_instance.png" alt="" style="width: 600px;"/>
+<img src="configure_aws_instance.png" alt="" style="width: 600px;"/>
 
-When I then go to localhost:8899 on my local machine, I'm faced with the familiar Jupyter interface.
+When I then go to localhost:8899 on my local machine and fill in the requested token, I'm faced with the familiar Jupyter interface.
 
 <img src="jupyter.png" alt="" style="width: 600px;"/>
 
-I can run my notebook and see that I'm clearly on a way bigger machine than my measly Macbook :P.
+I can then run my notebook and see that I'm clearly on a way bigger machine than my measly Macbook :P.
 
 <img src="notebook.png" alt="" style="width: 600px;"/>
 
-When I'm done running the notebook and want to kill the instance, so I can develop a bit more on my local machine without wasting the AWS credit, I can save the notebook, and run the `terminate_instance.sh` script from my macbook which will download the updated notebook and terminate the instance.
+When I'm done running the notebook, I can save my work and kill the instance with the `terminate_instance.sh` script on my local machine. This will download the updated notebook and terminate the expensive AWS instance. I can then continue developing on my local machine without wasting the AWS credit.
