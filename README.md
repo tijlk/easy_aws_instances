@@ -45,7 +45,7 @@ Now you're all set to start using the AWS CLI. For detailed information about th
 
 The critical part of the script (see the next section) is the following command which fires up an AWS instance:
 
-<img src="start_instance.png" alt="" style="width: 600px;"/>
+<img src="images/start_instance.png" alt="" style="width: 600px;"/>
 
 Note that you need an `image_id` which is the id of the Amazon Machine Image (AMI) that you want to load onto the instance. A commonly used Deep Learning image is for example [this one](https://aws.amazon.com/marketplace/pp/B077GF11NF) with Image ID `ami-06ae1bbcb7042c6c6`. It has Tensorflow and a lot of Python stuff already pre-installed.
 
@@ -59,24 +59,24 @@ To run the script yourself, clone [this repository](https://github.com/tijlk/eas
 
 At the top of the scripts you can find all the settings that you may want to change, depending on what you're trying to do:
 
-<img src="settings.png" alt="" style="width: 600px;"/>
+<img src="images/settings.png" alt="" style="width: 600px;"/>
 
 Let's run the script!
 
-<img src="run_the_script.png" alt="" style="width: 600px;"/>
+<img src="images/run_the_script.png" alt="" style="width: 600px;"/>
 
 So the script created a Security Group opening ports 22 (so I can SSH into the instance) and port 8888 (so I can work with the Jupyter notebook server on the instance from my local machine). It then started a new EC2 instance of the requested type, and copied my notebook and a configuration script to the instance. Finally it SSH'd into the instance forwarding port 8888 of the notebook server to port 8899 on my local machine.
 
 I can then run the configuration script `configure_aws_instance.sh` to update some Python packages, maybe download some data and start the notebook server.
 
-<img src="configure_aws_instance.png" alt="" style="width: 600px;"/>
+<img src="images/configure_aws_instance.png" alt="" style="width: 600px;"/>
 
 When I then go to localhost:8899 on my local machine and fill in the requested token, I'm faced with the familiar Jupyter interface.
 
-<img src="jupyter.png" alt="" style="width: 600px;"/>
+<img src="images/jupyter.png" alt="" style="width: 600px;"/>
 
 I can then run my notebook and see that I'm clearly on a way bigger machine than my measly Macbook :P.
 
-<img src="notebook.png" alt="" style="width: 600px;"/>
+<img src="images/notebook.png" alt="" style="width: 600px;"/>
 
 When I'm done running the notebook, I can save my work and kill the instance with the `terminate_instance.sh` script on my local machine. This will download the updated notebook and terminate the expensive AWS instance. I can then continue developing on my local machine without wasting the AWS credit.
