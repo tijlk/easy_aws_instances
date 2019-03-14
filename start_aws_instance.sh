@@ -1,11 +1,10 @@
 #!/bin/bash
-
 export AWS_SECURITY_GROUP_NAME=MySecurityGroup
 export INSTANCE_SCRIPT=configure_aws_instance.sh
 export NOTEBOOK=test_aws_instance.ipynb
 export MY_KEY_NAME=CSE89
 export IMAGE_ID=ami-06ae1bbcb7042c6c6
-export INSTANCE_TYPE=t2.micro
+export INSTANCE_TYPE=p3.8xlarge
 export REGION=eu-central-1
 export INSTANCE_USER_NAME=ec2-user
 export PATH_TO_KEY=
@@ -77,4 +76,4 @@ echo "SSH'ing to the instance..."
 ssh -L localhost:${LOCAL_JUPYTER_PORT_TO_USE}:localhost:8888 \
   -i ${PATH_TO_KEY}${MY_KEY_NAME}.pem \
   -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q \
-  ${INSTANCE_USER_NAME}@${DNS_NAME} \
+  ${INSTANCE_USER_NAME}@${DNS_NAME}

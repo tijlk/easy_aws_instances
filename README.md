@@ -14,7 +14,7 @@ Developing locally and running on AWS might take a number of trial and error ite
 
 ## Requirements
 
-In the script, I assume that you're running on a Mac (sorry), that you have a AWS account and that you have created a Key Pair and stored the corresponding .pem file on your laptop to authenticate yourself with your AWS instances. If you have no clue what I'm talking about, see for example the following tutorials that will guide you through your first experience with AWS:
+In the script, I assume that you're running on a Mac (sorry), that you have a AWS account and that you have created a Key Pair and stored the corresponding .pem file in the folder where you're running the script to authenticate yourself with your AWS instances. If you have no clue what I'm talking about, see for example the following tutorials that will guide you through your first experience with AWS:
 
 * [AWS EC2 Part 1: Creating EC2 instance](https://medium.com/@GalarnykMichael/aws-ec2-part-1-creating-ec2-instance-9d7f8368f78a)
 * [AWS EC2 Part 2: SSH into EC2](https://medium.com/@GalarnykMichael/aws-ec2-part-2-ssh-into-ec2-instance-c7879d47b6b2)
@@ -49,14 +49,18 @@ The critical part of the script (see the next section) is the following command 
 
 Note that you need an `image_id` which is the id of the Amazon Machine Image (AMI) that you want to load onto the instance. A commonly used Deep Learning image is for example [this one](https://aws.amazon.com/marketplace/pp/B077GF11NF) with Image ID `ami-06ae1bbcb7042c6c6`. It has Tensorflow and a lot of Python stuff already pre-installed.
 
-You also need to provide the type of instance you want to use. The beefier the instance, [the more you pay](https://aws.amazon.com/ec2/pricing/on-demand/) of course. In the screenshot below, I'm using a `p3.8xlarge` instance (costs about $12 per hour). For an instance like this you need to [request an instance limit increase](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html), because by default the limit is 0.
+You also need to provide the type of instance you want to use. The beefier the instance, [the more you pay](https://aws.amazon.com/ec2/pricing/on-demand/) of course. For example, I'm using a `p3.8xlarge` instance (costs about $12 per hour). For an instance like this you need to [request an instance limit increase](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html), because by default the limit is 0.
 
 Lastly you need to provide the name of your Key Pair, the name of the Security Group you want to use (this determines which ports are going to be open and to who) and the region you want to work in (e.g. `eu-central-1` which is in Frankfurt). The Security Group is created automatically by the script.
 
 ## Let's try it out!
 
-To run the script, download the [`start_aws_instance.sh`](https://github.com/tijlk/easy_aws_instances/blob/master/start_aws_instance.sh) script from my [Github repository](https://github.com/tijlk/easy_aws_instances). If you want to run the script without changing any of the code itself, you should make sure that you also have a script that you want to upload to your AWS instance for configuring the instance (I called it `configure_aws_instance.sh`) and you should have a notebook that you want to run (`test_aws_instance.ipynb` in my case). If you download both of them from the repo, it should run as is.
+To run the script yourself, clone [this repository](https://github.com/tijlk/easy_aws_instances) or download the [`start_aws_instance.sh`](https://github.com/tijlk/easy_aws_instances/blob/master/start_aws_instance.sh) script directly. If you want to run the script independently from the other scripts in this repository, you should make sure that you also have a script that you want to upload to your AWS instance for configuring the instance (I called it `configure_aws_instance.sh`) and you should have a notebook that you want to run (`test_aws_instance.ipynb` in my case).
 
-At the top of the scripts you can find all the settings that you might want to change:
+At the top of the scripts you can find all the settings that you may want to change, depending on what you're trying to do:
 
 <img src="settings.png" alt="" style="width: 600px;"/>
+
+Let's run the script!
+
+<img src="run_the_script.png" alt="" style="width: 600px;"/>
