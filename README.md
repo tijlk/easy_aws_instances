@@ -45,18 +45,18 @@ Now you're all set to start using the AWS CLI. For detailed information about th
 
 The critical part of the script (see the next section) is the following command which fires up an AWS instance:
 
-```
-aws ec2 run-instances --image-id ${IMAGE_ID} --count 1 \
-  --instance-type ${INSTANCE_TYPE} --key-name ${MY_KEY_NAME} \
-  --security-groups ${AWS_SECURITY_GROUP_NAME} --region ${REGION}
-```
+<img src="start_instance.png" alt="" style="width: 600px;"/>
 
 Note that you need an `image_id` which is the id of the Amazon Machine Image (AMI) that you want to load onto the instance. A commonly used Deep Learning image is for example [this one](https://aws.amazon.com/marketplace/pp/B077GF11NF) with Image ID `ami-06ae1bbcb7042c6c6`. It has Tensorflow and a lot of Python stuff already pre-installed.
 
-You also need to provide the type of instance you want to use. The beefier the instance, [the more you pay](https://aws.amazon.com/ec2/pricing/on-demand/) of course. In this example I'm using a `p3.8xlarge` instance (costs about $12 per hour). For an instance like this you need to [request an instance limit increase](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html), because by default the limit is 0.
+You also need to provide the type of instance you want to use. The beefier the instance, [the more you pay](https://aws.amazon.com/ec2/pricing/on-demand/) of course. In the screenshot below, I'm using a `p3.8xlarge` instance (costs about $12 per hour). For an instance like this you need to [request an instance limit increase](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html), because by default the limit is 0.
 
 Lastly you need to provide the name of your Key Pair, the name of the Security Group you want to use (this determines which ports are going to be open and to who) and the region you want to work in (e.g. `eu-central-1` which is in Frankfurt). The Security Group is created automatically by the script.
 
 ## Let's try it out!
 
-You can find
+To run the script, download the [`start_aws_instance.sh`](https://github.com/tijlk/easy_aws_instances/blob/master/start_aws_instance.sh) script from my [Github repository](https://github.com/tijlk/easy_aws_instances). If you want to run the script without changing any of the code itself, you should make sure that you also have a script that you want to upload to your AWS instance for configuring the instance (I called it `configure_aws_instance.sh`) and you should have a notebook that you want to run (`test_aws_instance.ipynb` in my case). If you download both of them from the repo, it should run as is.
+
+At the top of the scripts you can find all the settings that you might want to change:
+
+<img src="settings.png" alt="" style="width: 600px;"/>
