@@ -67,11 +67,9 @@ Let's run the script!
 
 So the script created a Security Group opening ports 22 (so I can SSH into the instance) and port 8888 (so I can work with the Jupyter notebook server on the instance from my local machine). It then started a new EC2 instance of the requested type, and copied my notebook and a configuration script to the instance. Finally it SSH'd into the instance forwarding port 8888 of the notebook server to port 8899 on my local machine.
 
-I can then run the configuration script `configure_aws_instance.sh` to update some Python packages, maybe download some data and start the notebook server.
+It then also automatically kicked off the uploaded `configure_aws_instance.sh` script. This script updates a couple of packages and then starts the Jupyter notebook server. This could also include downloading data from public sources or an S3 bucket for example.
 
-<img src="images/configure_aws_instance.png" alt="" style="width: 600px;"/>
-
-When I then go to localhost:8899 on my local machine and fill in the requested token, I'm faced with the familiar Jupyter interface.
+Finally, the URL of the notebook server (including the security token) is then retrieved and my browser automatically opens the familiar Jupyter interface.
 
 <img src="images/jupyter.png" alt="" style="width: 600px;"/>
 
